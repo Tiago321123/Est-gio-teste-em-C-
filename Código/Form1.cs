@@ -54,8 +54,6 @@ namespace Estágio_teste
         
         public void button1_Click(object sender, EventArgs e)
         {
-            if (textBox4.Text != "")
-            {
                 a += 1;
                 ListViewItem item1 = new ListViewItem(textBox4.Text, 0);
                 
@@ -76,7 +74,6 @@ namespace Estágio_teste
                 listView1.Items.AddRange(new ListViewItem[] { item1 });
                 label9.Text = valorTotal1[a]; /* Para label receber string, colocar .Text */
                 
-            }
         }
 
      
@@ -91,9 +88,13 @@ namespace Estágio_teste
         {
             listView1.Items.Clear();
             label9.Text = "";
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
+
         }
         
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
