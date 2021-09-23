@@ -16,7 +16,7 @@ namespace Estágio_teste
         {
             InitializeComponent();
         }
-        public Form2(string numero, string data, string nome, string total)
+        public Form2(string numero, string data, string nome, string total) // Recebendo os parâmetros
         {
             InitializeComponent();
             label3.Text = "#" + numero;
@@ -27,14 +27,17 @@ namespace Estágio_teste
 
         public ListView.ListViewItemCollection Items
         {
-            set
+            set // Set envia e Get pega informacao
             {
-                foreach (ListViewItem item in value)
+
+                foreach (ListViewItem item in value) // foreach: for - para, each - cada, foreach - para cada. Para cada item em value faça
                 {
                     listView1.Items.Add((ListViewItem)item.Clone());
                 }
+
             }
         }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -64,6 +67,7 @@ namespace Estágio_teste
         {
             label11.Text = DateTime.Now.ToString("dd/MM/yyyy");
             label12.Text = DateTime.Now.ToShortTimeString();
+            // label11.Text = DateTime.Now.ToLongDateString();  data em que foi gerado por extenso
         }
 
         private void label12_Click(object sender, EventArgs e)
@@ -75,5 +79,68 @@ namespace Estágio_teste
         {
 
         }
+
+        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void azulToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Cria um novo formulário 
+            Form frmAzul = new Form();
+
+            // Atribui um titulo ao formulário
+            frmAzul.Text = "Formulário Azul";
+
+            // Altera a cor de fundo do formulário
+            frmAzul.BackColor = System.Drawing.Color.Black;
+
+            // Maximiza o formulário filho
+            frmAzul.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+
+
+            // Define quem o pai desta janela
+            frmAzul.IsMdiContainer = true;
+
+            // exibe o formulário
+            frmAzul.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            Form1 form = new Form1();
+
+            this.Hide(); // muito engracado eu tinha usado form2.Hide() e não escondia, já com esse this esconde
+            form.Show();
+
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            
+            // Confirm user wants to close
+            switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo)) // ou no lugar de this, colocar Text e assim tirar o Closing, o Closing é o título da mensagem
+            {
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+                default:
+                    break;
+            } 
+            Application.Exit();
+        }
+        private void menuToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
